@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="theme-color" content="#d32f2f">
   <title>Convite Especial ❤️</title>
   <meta name="description" content="Um convite especial pra você ❤️">
@@ -298,7 +298,7 @@
       color: #fff;
       background: rgba(70, 0, 0, .75);
       font: inherit;
-      font-size: .85rem;
+      font-size: 16px;
       text-align: center;
     }
 
@@ -603,7 +603,7 @@
               id="sugestao"
               type="text"
               maxlength="80"
-              placeholder="Ou sugere outra ideia..."
+              placeholder="Ou sugere outra ideia"
               value="${escapeHtml(state.sugestao)}"
               style="margin-top:14px;"
             >
@@ -643,7 +643,7 @@ function screenFinal() {
     <div class="step">
 
       <div class="success">
-        🌹😏
+        🌹
       </div>
 
       <div class="card">
@@ -686,7 +686,7 @@ function screenFinal() {
           id="lugar"
           type="text"
           maxlength="80"
-          placeholder="📍 Sugere um lugar perto de você"
+          placeholder="📍 Lugar perto de você"
           value="${escapeHtml(state.lugar)}"
           style="margin-bottom:14px;"
         >
@@ -918,6 +918,17 @@ function bindEvents() {
 
         // ENVIAR
         if (action === "send") {
+
+          if (!state.lugar) {
+
+            document.getElementById(
+              "message"
+            ).textContent =
+              "Sugere um lugar perto de você 📍";
+
+            return;
+
+          }
 
           enviarEscolhas(button);
 
